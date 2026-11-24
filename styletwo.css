@@ -1,0 +1,102 @@
+
+:root { /* mengeset pewarnaan dengan rgb*/
+    --hitam: #0d0d10;
+    --panel: #1b1c22;
+    --baja: #3a3d46;
+    --merah: #b3001b;
+    --merah-terang: #e0102f;
+    --putih: #e8e8ec;
+    --perak: #9a9ca6;
+    --emas: #c9a227;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0; min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--putih);
+    background:
+        linear-gradient(135deg, rgba(179,0,27,.18) 0%, transparent 45%),
+        linear-gradient(315deg, rgba(179,0,27,.12) 0%, transparent 40%),
+        var(--hitam);
+}
+.site-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 32px;
+    background: linear-gradient(90deg, #000 0%, #1b1c22 100%);
+    border-bottom: 3px solid var(--merah);
+    animation: turun .6s ease;
+}
+.foto {
+    width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--merah); background: var(--baja);
+}
+.identitas h1 { margin: 0; font-size: 1.3rem; letter-spacing: .5px; }
+.identitas p  { margin: 2px 0 0; color: var(--perak); }
+
+.card {
+    max-width: 640px; margin: 32px auto; padding: 24px;
+    background: var(--panel); border-radius: 12px;
+    border: 1px solid var(--baja); border-top: 4px solid var(--merah);
+    box-shadow: 0 10px 30px rgba(0,0,0,.6);
+    animation: muncul .6s ease;
+}
+.card.kecil { max-width: 380px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; color: var(--perak); }
+.topbar b { color: var(--putih); }
+.topbar h2, .card h2 { margin: 0 0 12px; color: var(--putih); text-transform: uppercase; letter-spacing: 2px; }
+.topbar a { color: var(--merah-terang); text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+
+input[type=text], input[type=password] {
+    width: 100%; padding: 10px 12px; font-size: 1rem; color: var(--putih);
+    background: var(--hitam); border: 2px solid var(--baja);
+    border-radius: 6px; transition: border-color .2s, box-shadow .2s;
+    color-scheme: dark;
+}
+
+input[type=password]::-ms-reveal { display: none; }
+
+input::placeholder { color: var(--perak); }
+input:focus { outline: none; border-color: var(--merah); box-shadow: 0 0 8px rgba(224,16,47,.4); }
+button {
+    padding: 10px 16px; border: 0; border-radius: 6px; cursor: pointer;
+    font-size: .95rem; color: #fff; background: var(--merah);
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: transform .15s, background .2s, box-shadow .2s;
+}
+button:hover { transform: translateY(-2px); background: var(--merah-terang); box-shadow: 0 4px 12px rgba(224,16,47,.4); }
+
+.form-login label { display: block; margin-bottom: 12px; font-weight: 600; color: var(--perak); }
+.form-login input { margin-top: 4px; }
+.error { background: rgba(179,0,27,.25); color: #ff8a98; border: 1px solid var(--merah); padding: 8px 12px; border-radius: 6px; }
+
+.form-tambah { display: flex; gap: 8px; margin: 12px 0 20px; }
+
+.todo { list-style: none; margin: 0; padding: 0; }
+.todo li {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 12px 14px; margin-bottom: 8px;
+    background: var(--hitam); border-radius: 6px; border-left: 5px solid var(--merah);
+    opacity: 0; animation: masuk .45s ease forwards;
+    animation-delay: calc(var(--i) * 80ms);
+    transition: transform .2s, box-shadow .2s;
+}
+.todo li:hover { transform: translateX(4px); box-shadow: 0 4px 14px rgba(179,0,27,.35); }
+.todo li.done { border-left-color: var(--emas); }
+.todo li.done .teks { text-decoration: line-through; color: var(--perak); }
+.todo li.kosong { justify-content: center; color: var(--perak); border-left-color: var(--baja); }
+.todo form { display: flex; gap: 6px; }
+.btn-selesai { background: transparent; border: 1px solid var(--emas); color: var(--emas); }
+.btn-selesai:hover { background: var(--emas); color: #000; box-shadow: 0 4px 12px rgba(201,162,39,.4); }
+.btn-hapus { background: transparent; border: 1px solid var(--merah); color: var(--merah-terang); }
+.btn-hapus:hover { background: var(--merah); color: #fff; }
+
+.link { margin-top: 16px; text-align: center; }
+.link a { font-weight: 600; }
+.sukses { background: #c6f6d5; color: #276749; padding: 8px 12px; border-radius: 8px; }
+
+@keyframes turun  { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: none; } }
+@keyframes muncul { from { opacity: 0; transform: scale(.96); }        to { opacity: 1; transform: none; } }
+@keyframes masuk  { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: none; } }
+
+
